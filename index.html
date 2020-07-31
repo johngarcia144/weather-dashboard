@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-text">
+            WEATHER DASHBOARD
+          </span>
+      </nav>
+    <br>
+    <div class="containter">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group mb-3">
+                    <input type="text" id="city-input" class="form-control" placeholder="Search for a City" aria-label="Search for a City" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary add-city" type="button" id="button-addon2">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body" id="cities-view">
+                      <h1>Current Weather</h1>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;" id="list-view">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Denver</li>
+                      <li class="list-group-item">Boston</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                  </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+<script src="script.js"></script>    
+</body>
+</html>
