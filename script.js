@@ -34,10 +34,10 @@ function renderList() {
   for (var i = 0; i < cities.length; i++) {
 
     // Then dynamicaly generates buttons for each cities in the array
-    // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+    // This code $("<li>") is all jQuery needs to create the beginning and end tag. (<button></button>)
     var a = $("<li>");
     // Adds a class of city to our button
-    a.addClass("city");
+    a.addClass("city list-group-item");
     // Added a data-attribute
     a.attr("data-name", cities[i]);
     // Provided the initial button text
