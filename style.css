@@ -1,1 +1,39 @@
+.green {
+    background-color:green;
+    color: white;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: none;
+}
 
+.orange {
+    background-color: orange;
+    color: white;
+    padding: 15px;
+    border: none;
+}
+
+.yellow {
+    background-color:yellow;
+    color: black;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: none;
+}
+
+.red {
+    background-color: red;
+    background-size: ;
+    color: white;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: none;
+}
+
+.purple {
+    background-color: purple;
+    color: white;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: none;
+}
