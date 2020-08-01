@@ -1,6 +1,6 @@
-var cities = [];
+var cities = JSON.parse(localStorage.getItem("history"))||[];
 
-
+console.log(cities);
 
 // displayCityInfo function re-renders the HTML to display the appropriate content
 function displayCityInfo(city) {
