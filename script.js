@@ -17,9 +17,6 @@ function displayCityInfo(city) {
     var weatherIcon = "https://openweathermap.org/img/wn/" + img + "@2x.png";
     var image = $("<img>").attr("src", weatherIcon);    
     var date = moment().format('(MM/DD/YY)')
-    
-    
-    console.log(date);
 
     // Creates a div to hold the city
     var cityDiv = $("<div class='city'>");
@@ -27,7 +24,6 @@ function displayCityInfo(city) {
     var windSpeed = $("<p>").html("Wind Speed: " + response.wind.speed + " MPH");
     var humidity = $("<p>").html("Humidity: " + response.main.humidity + " %");
     var tempF = $("<p>").html((((response.main.temp - 273.15) * 1.8) + 32).toFixed(2) + " ℉");
-
 
     cityDiv.append(cityName, image, tempF, humidity, windSpeed);
     $("#cities-view").prepend(cityDiv);
@@ -37,53 +33,111 @@ function displayCityInfo(city) {
 
     var queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=minutely,hourly&appid=4e3233be19447a960ace2fad6e20dcb0";
 
-    $.ajax({
-      url: queryURL2,
-      method: "GET"
-    }).then(function(response) {
+      $.ajax({
+        url: queryURL2,
+        method: "GET"
+      }).then(function(response) {
 
-var img0 = response.daily[0].weather[0].icon;
-var weatherIcon0 = "https://openweathermap.org/img/wn/" + img0 + "@2x.png";
-var image0 = $("<img>").attr("src", weatherIcon0);
+        // empties the 5-day forecast everytime a new city is searched:
+        $("#day-0").empty();
+        $("#day-1").empty();
+        $("#day-2").empty();
+        $("#day-3").empty();
+        $("#day-4").empty();
+        // UVI index
+        // uviP - $("<p>");
+        // var uvi = response.current.uvi
+        // console.log(uvi);
+        
+        // uviP.append(uvi);
+        // $("#cities-view").append(uniP);
+        
 
+        // Day 0
+          var img0 = response.daily[0].weather[0].icon;
+          var weatherIcon0 = "https://openweathermap.org/img/wn/" + img0 + ".png";
+          var image0 = $("<img>").attr("src", weatherIcon0);
 
-var day0 = $("<div class=day0>");
-var image0 = $("<img>").attr("src", weatherIcon0); 
-console.log(image0)
-var temp0 = ((((response.daily[0].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉");
-console.log(temp0)
-var humidity0 = (response.daily[0].humidity + " %");
-console.log(humidity0);
-day0.append(image0, temp0, humidity0);
-$("#day-0").append(day0);
+          var day0 = $("<div class=day0>");
+          var image0 = $("<img>").attr("src", weatherIcon0); 
+          var temp0 = $("<p>").html((((response.daily[0].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉"); 
+          console.log(temp0)
+          var humidity0 = $("<p>").html("Humidity: " + response.daily[0].humidity + " %");
+          console.log(humidity0);
+          day0.append(image0, temp0, humidity0);
+          $("#day-0").append(day0);
 
+          // Day 1
+          var img1 = response.daily[1].weather[0].icon;
+          var weatherIcon1 = "https://openweathermap.org/img/wn/" + img1 + ".png";
+          var image1 = $("<img>").attr("src", weatherIcon1);
 
+          var day1 = $("<div class=day1>");
+          var image1 = $("<img>").attr("src", weatherIcon1); 
+          console.log(image1)
+          var temp1 = $("<p>").html((((response.daily[1].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉"); 
+          console.log(temp1)
+          var humidity1 = $("<p>").html("Humidity: " + response.daily[1].humidity + " %");
+          console.log(humidity1);
+          day1.append(image1, temp1, humidity1);
+          $("#day-1").append(day1);
 
-});
+          // Day 2
+          var img2 = response.daily[2].weather[0].icon;
+          var weatherIcon2 = "https://openweathermap.org/img/wn/" + img2 + ".png";
+          var image2 = $("<img>").attr("src", weatherIcon2);
 
+          var day2 = $("<div class=day2>");
+          var image2 = $("<img>").attr("src", weatherIcon1); 
+          var temp2 = $("<p>").html((((response.daily[2].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉"); 
+          var humidity2 = $("<p>").html("Humidity: " + response.daily[2].humidity + " %");
+          day2.append(image2, temp2, humidity2);
+          $("#day-2").append(day2);
+
+          // Day 3
+          var img3 = response.daily[3].weather[0].icon;
+          var weatherIcon3 = "https://openweathermap.org/img/wn/" + img3 + ".png";
+          var image3 = $("<img>").attr("src", weatherIcon3);
+          var day3 = $("<div class=day3>");
+          var image3 = $("<img>").attr("src", weatherIcon3); 
+          var temp3 = $("<p>").html((((response.daily[3].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉"); 
+          var humidity3 = $("<p>").html("Humidity: " + response.daily[3].humidity + " %");
+          day3.append(image3, temp3, humidity3);
+          $("#day-3").append(day3);
+
+          // Day 4
+          var img4 = response.daily[4].weather[0].icon;
+          var weatherIcon4 = "https://openweathermap.org/img/wn/" + img4 + ".png";
+          var image4 = $("<img>").attr("src", weatherIcon4);
+          var day4 = $("<div class=day4>");
+          var image4 = $("<img>").attr("src", weatherIcon4); 
+          var temp4 = $("<p>").html((((response.daily[4].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉"); 
+          var humidity4 = $("<p>").html("Humidity: " + response.daily[4].humidity + " %");
+          day4.append(image4, temp4, humidity4);
+          $("#day-4").append(day4);
+      });
+      
   });
 
-}
+};
 
 // Function for displaying city data
 function renderList() {
 
   // Deletes the cities prior to adding new cities
-  // (this is necessary otherwise you will have repeat buttons)
   $("#list-view").empty();
   // Loops through the array of cities
   for (var i = 0; i < cities.length; i++) {
 
-    // Then dynamicaly generates buttons for each cities in the array
-    // This code $("<li>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+    // Then dynamicaly generates a list for each cities in the array
     var a = $("<li>");
-    // Adds a class of city to our button
+    // Adds a class of city to our list
     a.addClass("city list-group-item");
     // Added a data-attribute
     a.attr("data-name", cities[i]);
-    // Provided the initial button text
+    // Provided the initial list text
     a.text(cities[i]);
-    // Added the button to the buttons-view div
+    // Added the list to the list-view div
     $("#list-view").append(a);
   }
 }
