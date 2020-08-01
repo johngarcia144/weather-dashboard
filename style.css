@@ -4,6 +4,7 @@
     padding: 15px;
     margin-bottom: 30px;
     border: none;
+    width: 30%;
 }
 
 .orange {
@@ -11,6 +12,7 @@
     color: white;
     padding: 15px;
     border: none;
+    width: 30%;
 }
 
 .yellow {
@@ -19,15 +21,16 @@
     padding: 15px;
     margin-bottom: 30px;
     border: none;
+    width: 30%;
 }
 
 .red {
     background-color: red;
-    background-size: ;
     color: white;
     padding: 15px;
     margin-bottom: 30px;
     border: none;
+    width: 30%;
 }
 
 .purple {
@@ -36,4 +39,5 @@
     padding: 15px;
     margin-bottom: 30px;
     border: none;
+    width: 30%;
 }
