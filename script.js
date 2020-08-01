@@ -187,7 +187,7 @@ $(".add-city").on("click", function(event) {
 // Adding click event listeners to all elements with a class of "city"
 $(document).on("click", ".city", function () {
     var city = $(this).attr("data-name");
-
+    
     displayCityInfo(city)
 });
 
