@@ -180,8 +180,10 @@ $(".add-city").on("click", function(event) {
   // The city from the textbox is then added to our array
   if(!cities.includes(city)) cities.push(city);
 
-  // Calling renderButtons which handles the processing of our city array
+// adds cities to local storage
   window.localStorage.setItem("history", JSON.stringify(cities));
+
+  // Calling renderButtons which handles the processing of our city array
   renderList();
 });
 
@@ -190,6 +192,8 @@ $(document).on("click", ".city", function () {
     var city = $(this).attr("data-name");
     
     displayCityInfo(city)
+
+    window.localStorage.setItem("history", JSON.stringify(cities));
 });
 
 // Calling the renderButtons function to display the initial buttons
