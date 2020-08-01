@@ -22,7 +22,7 @@ function displayCityInfo(city) {
     var cityDiv = $("<div class='city'>");
     var cityName = $("<h1>" + response.name + " " + date + "</h1>");
     var windSpeed = $("<p>").html("Wind Speed: " + response.wind.speed + " MPH");
-    var humidity = $("<p>").html("Humidity: " + response.main.humidity + " %");
+    var humidity = $("<p>").html("Humidity: " + response.main.humidity + "%");
     var uv = $("<p id='uv'>").html("UV Index: ");
     var tempF = $("<p>").html((((response.main.temp - 273.15) * 1.8) + 32).toFixed(2) + " ℉");
 
@@ -79,7 +79,7 @@ function displayCityInfo(city) {
           var image0 = $("<img>").attr("src", weatherIcon0); 
           var temp0 = $("<p>").html((((response.daily[0].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉"); 
           console.log(temp0)
-          var humidity0 = $("<p>").html("Humidity: " + response.daily[0].humidity + " %");
+          var humidity0 = $("<p>").html("Humidity: " + response.daily[0].humidity + "%");
           console.log(humidity0);
           day0.append(date0El, image0, temp0, humidity0);
           $("#day-0").append(day0);
@@ -96,7 +96,7 @@ function displayCityInfo(city) {
           console.log(image1)
           var temp1 = $("<p>").html((((response.daily[1].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉"); 
           console.log(temp1)
-          var humidity1 = $("<p>").html("Humidity: " + response.daily[1].humidity + " %");
+          var humidity1 = $("<p>").html("Humidity: " + response.daily[1].humidity + "%");
           console.log(humidity1);
           day1.append(date1El, image1, temp1, humidity1);
           $("#day-1").append(day1);
@@ -111,7 +111,7 @@ function displayCityInfo(city) {
           var day2 = $("<div class=day2>");
           var image2 = $("<img>").attr("src", weatherIcon1); 
           var temp2 = $("<p>").html((((response.daily[2].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉"); 
-          var humidity2 = $("<p>").html("Humidity: " + response.daily[2].humidity + " %");
+          var humidity2 = $("<p>").html("Humidity: " + response.daily[2].humidity + "%");
           day2.append(date2El, image2, temp2, humidity2);
           $("#day-2").append(day2);
 
@@ -125,7 +125,7 @@ function displayCityInfo(city) {
           var day3 = $("<div class=day3>");
           var image3 = $("<img>").attr("src", weatherIcon3); 
           var temp3 = $("<p>").html((((response.daily[3].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉"); 
-          var humidity3 = $("<p>").html("Humidity: " + response.daily[3].humidity + " %");
+          var humidity3 = $("<p>").html("Humidity: " + response.daily[3].humidity + "%");
           day3.append(date3El, image3, temp3, humidity3);
           $("#day-3").append(day3);
 
@@ -139,7 +139,7 @@ function displayCityInfo(city) {
           var day4 = $("<div class=day4>");
           var image4 = $("<img>").attr("src", weatherIcon4); 
           var temp4 = $("<p>").html((((response.daily[4].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉"); 
-          var humidity4 = $("<p>").html("Humidity: " + response.daily[4].humidity + " %");
+          var humidity4 = $("<p>").html("Humidity: " + response.daily[4].humidity + "%");
           day4.append(date4El, image4, temp4, humidity4);
           $("#day-4").append(day4);
       });
