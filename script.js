@@ -181,6 +181,7 @@ $(".add-city").on("click", function(event) {
   if(!cities.includes(city)) cities.push(city);
 
   // Calling renderButtons which handles the processing of our city array
+  window.localStorage.setItem("history", JSON.stringify(cities));
   renderList();
 });
 
