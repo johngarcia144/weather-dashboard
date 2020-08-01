@@ -1,9 +1,9 @@
 var cities = [];
 
-// displayCityInfo function re-renders the HTML to display the appropriate content
-function displayCityInfo() {
 
-  var city = $(this).attr("data-name");
+
+// displayCityInfo function re-renders the HTML to display the appropriate content
+function displayCityInfo(city) {
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=4e3233be19447a960ace2fad6e20dcb0";
 
   // Creates AJAX call for the specific city button being clicked
@@ -11,15 +11,56 @@ function displayCityInfo() {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
+    $("#cities-view").empty();
+
+    var img = response.weather[0].icon
+    var weatherIcon = "https://openweathermap.org/img/wn/" + img + "@2x.png";
+    var image = $("<img>").attr("src", weatherIcon);    
+    var date = moment().format('(MM/DD/YY)')
+    
+    
+    console.log(date);
 
     // Creates a div to hold the city
-    var cityDiv = $("<h1>" + response.name + ", " + response.sys.country + "</h1>");
-    var windSpeed = $("<p>").text("Wind Speed: " + response.wind.speed + " KPH");
-    var humidity = $("<p>").text("Humidity: " + response.main.humidity + " %");
-    var coordinates = $("<p>").text(response.coord.lon + ", " + response.coord.lat);
-    
-    cityDiv.append(windSpeed, humidity, coordinates);
+    var cityDiv = $("<div class='city'>");
+    var cityName = $("<h1>" + response.name + " " + date + "</h1>");
+    var windSpeed = $("<p>").html("Wind Speed: " + response.wind.speed + " MPH");
+    var humidity = $("<p>").html("Humidity: " + response.main.humidity + " %");
+    var tempF = $("<p>").html((((response.main.temp - 273.15) * 1.8) + 32).toFixed(2) + " ℉");
+
+
+    cityDiv.append(cityName, image, tempF, humidity, windSpeed);
     $("#cities-view").prepend(cityDiv);
+
+    var lat = response.coord.lat;
+    var long = response.coord.lon;
+
+    var queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=minutely,hourly&appid=4e3233be19447a960ace2fad6e20dcb0";
+
+    $.ajax({
+      url: queryURL2,
+      method: "GET"
+    }).then(function(response) {
+
+var img0 = response.daily[0].weather[0].icon;
+var weatherIcon0 = "https://openweathermap.org/img/wn/" + img0 + "@2x.png";
+var image0 = $("<img>").attr("src", weatherIcon0);
+
+
+var day0 = $("<div class=day0>");
+var image0 = $("<img>").attr("src", weatherIcon0); 
+console.log(image0)
+var temp0 = ((((response.daily[0].temp.day - 273.15) * 1.8) + 32).toFixed(2) + " ℉");
+console.log(temp0)
+var humidity0 = (response.daily[0].humidity + " %");
+console.log(humidity0);
+day0.append(image0, temp0, humidity0);
+$("#day-0").append(day0);
+
+
+
+});
+
   });
 
 }
@@ -53,15 +94,21 @@ $(".add-city").on("click", function(event) {
   // This line of code will grab the input from the textbox
   var city = $("#city-input").val().trim();
 
+  displayCityInfo(city)
+
   // The city from the textbox is then added to our array
-  cities.push(city);
+  if(!cities.includes(city)) cities.push(city);
 
   // Calling renderButtons which handles the processing of our city array
   renderList();
 });
 
 // Adding click event listeners to all elements with a class of "city"
-$(document).on("click", ".city", displayCityInfo);
+$(document).on("click", ".city", function () {
+    var city = $(this).attr("data-name");
+
+    displayCityInfo(city)
+});
 
 // Calling the renderButtons function to display the initial buttons
 renderList();
